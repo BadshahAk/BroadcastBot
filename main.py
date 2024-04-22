@@ -200,6 +200,22 @@ async def _banned_usrs(c, m):
         return
     await m.reply_text(reply_text, True)
 
+@Bot.on_message(filters.private & filters.command("list"))
+async def list_users(client, message):
+    if message.from_user.id not in AUTH_USERS:
+        await message.delete()
+        return
+    
+    all_users = await db.get_all_users()
+    user_ids = [str(user["user_id"]) for user in all_users]
+    user_id_text = "\n".join(user_ids)
+    
+    with open("user_ids.txt", "w") as file:
+        file.write(user_id_text)
+    
+    await message.reply_document(document="user_ids.txt", caption="Here is the list of user IDs.", quote=True)
+    os.remove("user_ids.txt")
+
 
 @Bot.on_callback_query()
 async def callback_handlers(bot: Client, cb: CallbackQuery):
