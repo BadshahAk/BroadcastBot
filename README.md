@@ -55,7 +55,7 @@ banned_users - Show Banned Users
 ### Host Locally 🤕
 
 ```shell
-git clone https://github.com/nacbots/BroadcastBot
+git clone https://github.com/SL-MGx03/BroadcastBot
 cd BroadcastBot
 pip3 install -r requirements.txt
 # EDIT config.py values appropriately
