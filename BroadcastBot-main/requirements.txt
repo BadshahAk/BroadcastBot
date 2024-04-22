@@ -1,5 +1,0 @@
-pyrogram
-tgcrypto
-aiofiles
-motor
-dnspython
